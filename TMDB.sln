@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDB.API", "TMDB.API\TMDB.API.csproj", "{75F35048-42BC-4C1C-B687-3393442A38EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75F35048-42BC-4C1C-B687-3393442A38EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F35048-42BC-4C1C-B687-3393442A38EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F35048-42BC-4C1C-B687-3393442A38EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F35048-42BC-4C1C-B687-3393442A38EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87C06B62-B40D-467C-BC4F-3EFFF4B1E377}
+	EndGlobalSection
+EndGlobal
