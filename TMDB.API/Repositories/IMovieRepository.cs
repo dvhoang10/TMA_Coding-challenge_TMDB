@@ -9,5 +9,6 @@ namespace TMDB.API.Repositories
         Task<MovieList<Movie>?> GetMovieListAsync(string language = "en-US", int page = 1);
         Task<MovieDetails?> GetMovieDetailsAsync(int movieID);
         Task<Status?> AddRatingAsync(int movieID, AddRatingDTO addRatingDTO);
+        Task<Status?> DeleteRatingAsync(int movieID);
     }
 }

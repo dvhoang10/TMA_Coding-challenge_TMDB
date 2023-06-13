@@ -23,7 +23,7 @@ namespace TMDB.API.Controllers
         // GET RATED MOVIES
         [HttpGet]
         [Route("{account_id}/rated/movies")]
-        public async Task<IActionResult> GetMoviesRated([FromRoute] int account_id, [FromQuery] string language = "en-US", [FromQuery] int page = 1, [FromQuery] string sort_by = "created_at.asc")
+        public async Task<IActionResult> GetMoviesRated([FromRoute] int account_id = 13046451, [FromQuery] string language = "en-US", [FromQuery] int page = 1, [FromQuery] string sort_by = "created_at.asc")
         {
             var movieList = await accountRepository.GetMoviesRatedAsync(account_id);
 

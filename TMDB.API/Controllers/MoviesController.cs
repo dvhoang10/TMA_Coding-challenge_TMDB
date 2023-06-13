@@ -53,5 +53,17 @@ namespace TMDB.API.Controllers
 
             return Ok(statusReponse);
         }
+
+        // DELETE RATING
+        [HttpDelete]
+        [Route("{movie_id}/rating")]
+        public async Task<IActionResult> DeleteRating([FromRoute] int movie_id)
+        {
+            var statusReponse = await movieRepository.DeleteRatingAsync(movie_id);
+
+            if (statusReponse == null) return NotFound();
+
+            return Ok(statusReponse);
+        }
     }
 }

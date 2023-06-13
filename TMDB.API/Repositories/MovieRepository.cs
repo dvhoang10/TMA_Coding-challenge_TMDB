@@ -5,6 +5,7 @@ using TMDB.API.Models.Domain;
 using TMDB.API.Models.DTO;
 using TMDB.API.Utils;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TMDB.API.Repositories
 {
@@ -43,6 +44,15 @@ namespace TMDB.API.Repositories
         "application/json");
 
             HttpResponseMessage httpResponseMessage = await httpClient.PostAsync($"movie/{movieID}/rating", data);
+
+            var result = await Utilities.GetResponseAsync<Status>(httpResponseMessage);
+
+            return result;
+        }
+
+        public async Task<Status?> DeleteRatingAsync(int movieID)
+        {
+            HttpResponseMessage httpResponseMessage = await httpClient.DeleteAsync($"movie/{movieID}/rating");
 
             var result = await Utilities.GetResponseAsync<Status>(httpResponseMessage);
 
