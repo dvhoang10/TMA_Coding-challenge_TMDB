@@ -24,12 +24,21 @@ namespace TMDB.API.Controllers
         {
             var movieList = await movieRepository.GetMovieListAsync(language, page);
 
-            if (movieList == null)
-            {
-                return NotFound();
-            }
+            if (movieList == null) return NotFound();
 
             return Ok(mapper.Map<MovieListDTO>(movieList));
+        }
+
+        // GET MOVIE DETAILS BY ID
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetMovieDetails([FromRoute] int id)
+        {
+            var movieDetails = await movieRepository.GetMovieDetailsAsync(id);
+
+            if (movieDetails == null) return NotFound();
+
+            return Ok(movieDetails);
         }
     }
 }
