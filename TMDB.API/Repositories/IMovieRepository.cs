@@ -6,8 +6,8 @@ namespace TMDB.API.Repositories
 {
     public interface IMovieRepository
     {
-        Task<MovieList?> GetMovieListAsync(string language, int page);
-        Task<MovieDetails?> GetMovieDetailsAsync(int id);
-        Task<StatusResponseDTO?> AddRatingAsync(int id, AddRatingDTO addRatingDTO);
+        Task<MovieList<Movie>?> GetMovieListAsync(string language = "en-US", int page = 1);
+        Task<MovieDetails?> GetMovieDetailsAsync(int movieID);
+        Task<Status?> AddRatingAsync(int movieID, AddRatingDTO addRatingDTO);
     }
 }

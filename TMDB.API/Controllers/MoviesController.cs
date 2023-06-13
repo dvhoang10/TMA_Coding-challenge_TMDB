@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using TMDB.API.Models.Domain;
 using TMDB.API.Models.DTO;
 using TMDB.API.Repositories;
 
@@ -26,15 +27,15 @@ namespace TMDB.API.Controllers
 
             if (movieList == null) return NotFound();
 
-            return Ok(mapper.Map<MovieListDTO>(movieList));
+            return Ok(mapper.Map<MovieListDTO<Movie>>(movieList));
         }
 
         // GET MOVIE DETAILS BY ID
         [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> GetMovieDetails([FromRoute] int id)
+        [Route("{movie_id}")]
+        public async Task<IActionResult> GetMovieDetails([FromRoute] int movie_id)
         {
-            var movieDetails = await movieRepository.GetMovieDetailsAsync(id);
+            var movieDetails = await movieRepository.GetMovieDetailsAsync(movie_id);
 
             if (movieDetails == null) return NotFound();
 
@@ -43,10 +44,10 @@ namespace TMDB.API.Controllers
 
         // ADD RATING
         [HttpPost]
-        [Route("{id}/rating")]
-        public async Task<IActionResult> AddRating([FromRoute] int id, [FromBody] AddRatingDTO addRatingDTO)
+        [Route("{movie_id}/rating")]
+        public async Task<IActionResult> AddRating([FromRoute] int movie_id, [FromBody] AddRatingDTO addRatingDTO)
         {
-            var statusReponse = await movieRepository.AddRatingAsync(id, addRatingDTO);
+            var statusReponse = await movieRepository.AddRatingAsync(movie_id, addRatingDTO);
 
             if (statusReponse == null) return NotFound();
 

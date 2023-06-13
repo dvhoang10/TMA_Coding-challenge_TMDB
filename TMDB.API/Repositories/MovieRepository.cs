@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Text;
 using TMDB.API.Models.Domain;
 using TMDB.API.Models.DTO;
+using TMDB.API.Utils;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace TMDB.API.Repositories
@@ -18,47 +19,34 @@ namespace TMDB.API.Repositories
             httpClient = httpClientFactory.CreateClient("Tmdb");
         }
 
-        public async Task<MovieList?> GetMovieListAsync(string language, int page)
+        public async Task<MovieList<Movie>?> GetMovieListAsync(string language, int page)
         {
             HttpResponseMessage httpResponseMessage = await httpClient.GetAsync($"movie/popular?language={language}&page={page}");
 
-            var result = await GetResponseAsync<MovieList>(httpResponseMessage);
+            var result = await Utilities.GetResponseAsync<MovieList<Movie>>(httpResponseMessage);
 
             return result;
         }
 
-        public async Task<MovieDetails?> GetMovieDetailsAsync(int id)
+        public async Task<MovieDetails?> GetMovieDetailsAsync(int movieID)
         {
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync($"movie/{id}");
+            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync($"movie/{movieID}");
 
-            var result = await GetResponseAsync<MovieDetails>(httpResponseMessage);
+            var result = await Utilities.GetResponseAsync<MovieDetails>(httpResponseMessage);
 
             return result;
         }
 
-        public async Task<StatusResponseDTO?> AddRatingAsync(int id, AddRatingDTO addRatingDTO)
+        public async Task<Status?> AddRatingAsync(int movieID, AddRatingDTO addRatingDTO)
         {
             var data = new StringContent(JsonConvert.SerializeObject(addRatingDTO), Encoding.UTF8,
         "application/json");
 
-            HttpResponseMessage httpResponseMessage = await httpClient.PostAsync($"movie/{id}/rating", data);
+            HttpResponseMessage httpResponseMessage = await httpClient.PostAsync($"movie/{movieID}/rating", data);
 
-            var result = await GetResponseAsync<StatusResponseDTO>(httpResponseMessage);
+            var result = await Utilities.GetResponseAsync<Status>(httpResponseMessage);
 
             return result;
-        }
-
-        private async Task<T?> GetResponseAsync<T>(HttpResponseMessage httpResponseMessage) where T : class
-        {
-            if (httpResponseMessage.IsSuccessStatusCode)
-            {
-                var response = await httpResponseMessage.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<T>(response);
-
-                return result;
-            }
-
-            return null;
         }
     }
 }

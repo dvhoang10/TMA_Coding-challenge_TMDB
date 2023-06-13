@@ -1,6 +1,6 @@
-﻿namespace TMDB.API.Models.DTO
+﻿namespace TMDB.API.Models.Domain
 {
-    public class StatusResponseDTO
+    public class Status
     {
         public bool Success { get; set; }
         public int Status_code { get; set; }

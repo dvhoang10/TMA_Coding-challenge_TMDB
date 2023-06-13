@@ -22,6 +22,7 @@ builder.Services.AddHttpClient("Tmdb", httpClient =>
 });
 
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 

@@ -2,6 +2,6 @@
 {
     public class AddRatingDTO
     {
-        public int value { get; set; }
+        public float value { get; set; }
     }
 }

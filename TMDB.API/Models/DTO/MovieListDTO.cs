@@ -1,10 +1,8 @@
-﻿using TMDB.API.Models.Domain;
-
-namespace TMDB.API.Models.DTO
+﻿namespace TMDB.API.Models.DTO
 {
-    public class MovieListDTO
+    public class MovieListDTO<T> where T : class
     {
-        public List<Movie>? results { get; set; }
+        public List<T>? results { get; set; }
         public int total_pages { get; set; }
         public int total_results { get; set; }
     }
