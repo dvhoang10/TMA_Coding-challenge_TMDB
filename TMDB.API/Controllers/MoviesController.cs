@@ -40,5 +40,17 @@ namespace TMDB.API.Controllers
 
             return Ok(movieDetails);
         }
+
+        // ADD RATING
+        [HttpPost]
+        [Route("{id}/rating")]
+        public async Task<IActionResult> AddRating([FromRoute] int id, [FromBody] AddRatingDTO addRatingDTO)
+        {
+            var statusReponse = await movieRepository.AddRatingAsync(id, addRatingDTO);
+
+            if (statusReponse == null) return NotFound();
+
+            return Ok(statusReponse);
+        }
     }
 }

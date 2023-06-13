@@ -8,7 +8,6 @@
         public string? Imdb_id { get; set; }
         public List<Company>? Production_companies { get; set; }
         public List<ProductionCountry>? Production_countries { get; set; }
-        public string? Release_date { get; set; }
         public long Revenue { get; set; }
         public int Runtime { get; set; }
         public string? Status { get; set; }
