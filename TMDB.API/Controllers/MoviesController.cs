@@ -19,11 +19,12 @@ namespace TMDB.API.Controllers
             this.mapper = mapper;
         }
 
-        // GET MOVIE LIST
+        // GET MOVIE LIST ORDERED BY RATING
         [HttpGet]
+        [Route("top_rated")]
         public async Task<IActionResult> GetMovieList([FromQuery] string language = "en-US", [FromQuery] int page = 1)
         {
-            var movieList = await movieRepository.GetMovieListAsync(language, page);
+            var movieList = await movieRepository.GetMovieListAsync( language, page);
 
             if (movieList == null) return NotFound();
 

@@ -22,7 +22,7 @@ namespace TMDB.API.Repositories
 
         public async Task<MovieList<Movie>?> GetMovieListAsync(string language, int page)
         {
-            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync($"movie/popular?language={language}&page={page}");
+            HttpResponseMessage httpResponseMessage = await httpClient.GetAsync($"movie/top_rated?language={language}&page={page}");
 
             var result = await Utilities.GetResponseAsync<MovieList<Movie>>(httpResponseMessage);
 
