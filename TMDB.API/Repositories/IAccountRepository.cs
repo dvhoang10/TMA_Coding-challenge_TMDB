@@ -4,6 +4,6 @@ namespace TMDB.API.Repositories
 {
     public interface IAccountRepository
     {
-        Task<MovieList<MovieRated>?> GetMoviesRatedAsync(int accountID, string language, int page, string sortBy);
+        Task<MovieList<MovieRated>?> GetMoviesRatedAsync(int accountId, string language, int page, string sortBy);
     }
 }

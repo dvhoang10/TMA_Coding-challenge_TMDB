@@ -8,8 +8,8 @@ namespace TMDB.API.Mappings
     {
         public AutoMapperProfiles()
         {
-            CreateMap<MovieList<Movie>, MovieListDTO<Movie>>().ReverseMap();
-            CreateMap<MovieList<MovieRated>, MovieListDTO<MovieRated>>().ReverseMap();
+            CreateMap<MovieList<Movie>, MovieListDto<Movie>>().ReverseMap();
+            CreateMap<MovieList<MovieRated>, MovieListDto<MovieRated>>().ReverseMap();
         }
     }
 }

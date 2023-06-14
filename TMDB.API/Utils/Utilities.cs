@@ -6,15 +6,12 @@ namespace TMDB.API.Utils
     {
         public static async Task<T?> GetResponseAsync<T>(HttpResponseMessage httpResponseMessage) where T : class
         {
-            if (httpResponseMessage.IsSuccessStatusCode)
-            {
-                var response = await httpResponseMessage.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<T>(response);
+            if (!httpResponseMessage.IsSuccessStatusCode) return null;
 
-                return result;
-            }
+            var response = await httpResponseMessage.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<T>(response);
 
-            return null;
+            return result;
         }
     }
 }

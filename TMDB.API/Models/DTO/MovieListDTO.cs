@@ -1,9 +1,9 @@
 ﻿namespace TMDB.API.Models.DTO
 {
-    public class MovieListDTO<T> where T : class
+    public class MovieListDto<T> where T : class
     {
-        public List<T>? results { get; set; }
-        public int total_pages { get; set; }
-        public int total_results { get; set; }
+        public List<T>? Results { get; set; }
+        public int Total_pages { get; set; }
+        public int Total_results { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TMDB.API.Models.DTO
 {
-    public class AddRatingDTO
+    public class AddRatingDto
     {
         public float value { get; set; }
     }
